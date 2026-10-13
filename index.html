@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B S Property — Premium Rental Homes in Mumbai</title>
+  <meta name="description"
+    content="Discover premium rental apartments in Mumbai's finest neighbourhoods — Bandra, Juhu, Powai, Andheri & Thane. Curated listings with transparent pricing." />
+  <meta property="og:title" content="B S Property — Premium Rental Homes in Mumbai" />
+  <meta property="og:description" content="Discover premium rental apartments in Mumbai's finest neighbourhoods." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+
+<body>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ================================================================
+     PROPERTY DETAIL PAGE (hidden by default)
+     ================================================================ -->
+  <div id="detail-page" role="dialog" aria-modal="true" aria-label="Property Detail"></div>
+
+  <!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" id="logo">B&nbsp;S&nbsp;<span>PROPERTY</span></a>
+
+        <ul class="nav-links">
+          <li><a href="#listings">Properties</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#broker-cta">For Brokers</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+
+        <a href="#listings" class="btn btn-outline nav-cta" id="nav-explore-btn"
+          style="padding:9px 20px;font-size:0.72rem;">View Listings</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
+    <a href="#listings">Properties</a>
+    <a href="#locations">Locations</a>
+    <a href="#broker-cta">For Brokers</a>
+    <a href="#footer">Contact</a>
+    <a href="#listings" class="btn btn-gold" style="font-size:0.85rem;margin-top:8px;">View Listings</a>
+  </div>
+
+  <!-- ================================================================
+     HERO — Two-column editorial layout
+     ================================================================ -->
+  <section id="hero" aria-label="Hero section">
+
+    <!-- Left: Typography column -->
+    <div class="hero-text-col">
+      <p class="hero-eyebrow">Mumbai · Premium Rentals</p>
+
+      <h1 class="hero-title">
+        Where you<br />
+        live <em>defines</em><br />
+        how you live.
+      </h1>
+
+      <div class="hero-rule"></div>
+
+      <p class="hero-subtitle">
+        Curated rental homes across Bandra, Juhu, Powai,
+        Andheri and Thane. Transparent pricing. Direct broker access.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#listings" class="btn btn-primary" id="hero-explore-btn">
+          Explore Properties
+        </a>
+        <a href="#broker-cta" class="btn btn-outline" id="hero-broker-btn">List a Property</a>
+      </div>
+    </div>
+
+    <!-- Right: Architectural image -->
+    <div class="hero-img-col">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85"
+        alt="Premium residential architecture in Mumbai" id="hero-img" />
+      <div class="hero-edition">Est. 2015</div>
+      <div class="hero-img-caption">Mumbai, Maharashtra</div>
+    </div>
+
+    <!-- Search Bar — anchored to bottom -->
+    <div class="search-bar-wrap">
+      <div class="search-bar" role="search">
+        <div class="search-bar-inner">
+          <!-- Location -->
+          <div class="search-field">
+            <label for="search-location">Location</label>
+            <select id="search-location">
+              <option value="all">All Areas</option>
+              <option value="Bandra">Bandra</option>
+              <option value="Andheri">Andheri</option>
+              <option value="Powai">Powai</option>
+              <option value="Juhu">Juhu</option>
+              <option value="Thane">Thane</option>
+            </select>
+          </div>
+
+          <!-- Type -->
+          <div class="search-field">
+            <label for="search-type">Property Type</label>
+            <select id="search-type">
+              <option value="all">Any Type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Penthouse">Penthouse</option>
+              <option value="Studio">Studio</option>
+            </select>
+          </div>
+
+          <!-- Budget -->
+          <div class="search-field">
+            <label for="search-budget">Budget</label>
+            <select id="search-budget">
+              <option value="all">Any Budget</option>
+              <option value="40000">Up to ₹40,000</option>
+              <option value="80000">Up to ₹80,000</option>
+              <option value="150000">Up to ₹1.5L</option>
+              <option value="500000">₹1.5L+</option>
+            </select>
+          </div>
+
+          <div class="search-btn-wrap">
+            <button class="btn btn-gold" id="search-btn" style="white-space:nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================================================================
+     STATS BAR
+     ================================================================ -->
+  <div class="stats-bar" aria-label="Key statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-section">
+          <div class="stat-number"><em>200</em>+</div>
+          <div class="stat-label">Premium Listings</div>
+        </div>
+        <div class="stat-item fade-section">
+          <div class="stat-number"><em>5</em></div>
+          <div class="stat-label">Prime Locations</div>
+        </div>
+        <div class="stat-item fade-section">
+          <div class="stat-number"><em>98</em>%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item fade-section">
+          <div class="stat-number"><em>10</em>Y+</div>
+          <div class="stat-label">Market Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+     PROPERTY LISTINGS
+     ================================================================ -->
+  <section id="listings" class="section" aria-label="Property listings">
+    <div class="container">
+
+      <div class="listings-header">
+        <div>
+          <span class="section-label">Curated for You</span>
+          <h2 class="section-title">Premium Rentals<br />in Mumbai</h2>
+        </div>
+        <p class="section-subtitle" style="max-width:300px;text-align:right;">
+          Handpicked properties across Mumbai's most desirable addresses.
+          All prices in INR per month.
+        </p>
+      </div>
+
+      <!-- Filter Strip — joined segmented control -->
+      <div class="filter-strip" role="group" aria-label="Location filters">
+        <button class="filter-btn active" data-area="All" id="filter-all">All Areas</button>
+        <button class="filter-btn" data-area="Bandra" id="filter-bandra">Bandra</button>
+        <button class="filter-btn" data-area="Andheri" id="filter-andheri">Andheri</button>
+        <button class="filter-btn" data-area="Powai" id="filter-powai">Powai</button>
+        <button class="filter-btn" data-area="Juhu" id="filter-juhu">Juhu</button>
+        <button class="filter-btn" data-area="Thane" id="filter-thane">Thane</button>
+      </div>
+
+      <div class="filter-strip-type" role="group" aria-label="Property type filters">
+        <button class="filter-btn active" data-type="All" id="type-all">All Types</button>
+        <button class="filter-btn" data-type="Apartment" id="type-apartment">Apartment</button>
+        <button class="filter-btn" data-type="Penthouse" id="type-penthouse">Penthouse</button>
+        <button class="filter-btn" data-type="Studio" id="type-studio">Studio</button>
+      </div>
+
+      <!-- Property Grid -->
+      <div class="property-grid" id="property-grid" role="list" aria-label="Property cards"></div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+     LOCATIONS — Asymmetric editorial grid
+     ================================================================ -->
+  <section id="locations" class="section" aria-label="Browse by location">
+    <div class="container">
+      <div class="locations-header-grid">
+        <div>
+          <span class="section-label">Explore by Neighbourhood</span>
+          <h2 class="section-title">Mumbai's Finest<br />Addresses</h2>
+        </div>
+        <p class="section-subtitle" style="margin-top:0;">
+          Click any neighbourhood to filter listings by location and discover
+          properties that suit your lifestyle.
+        </p>
+      </div>
+
+      <div class="locations-grid" id="locations-grid" role="list" aria-label="Neighbourhood cards"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+     BROKER CTA
+     ================================================================ -->
+  <section id="broker-cta" class="section" aria-label="For brokers and property dealers">
+    <div class="container">
+      <div class="broker-inner">
+
+        <!-- Text -->
+        <div class="broker-text fade-section">
+          <span class="section-label">For Property Dealers</span>
+          <h2 class="section-title">Your Properties Deserve<br />a Better Showcase.</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            A professional digital presence helps brokers display listings
+            and share direct property links with prospective tenants — closing deals faster.
+          </p>
+          <ul class="broker-features" style="margin-top:24px;">
+            <li>Shareable property links with full listing details</li>
+            <li>WhatsApp inquiry button on every listing</li>
+            <li>Photo gallery with multiple property images</li>
+            <li>Filter by area, type, and budget</li>
+            <li>Fully responsive — works on all devices</li>
+            <li>No app downloads required for tenants</li>
+          </ul>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+            <a href="https://wa.me/919999999999?text=Hello!%20I%20would%20like%20to%20list%20my%20properties%20on%20B%20S%20Property."
+              target="_blank" rel="noopener" class="btn btn-gold" id="broker-whatsapp-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Get Started
+            </a>
+            <a href="#listings" class="btn btn-outline" id="broker-view-btn">View Demo</a>
+          </div>
+        </div>
+
+        <!-- Stats panel — no glowing orbs -->
+        <div class="broker-visual fade-section">
+          <div style="margin-bottom:24px;">
+            <span class="section-label" style="margin-bottom:0.4rem;">Platform Impact</span>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;">What a professional listing page delivers
+              for brokers every month.</p>
+          </div>
+
+          <div class="broker-stat-grid">
+            <div class="broker-stat">
+              <div class="broker-stat-num">3×</div>
+              <div class="broker-stat-lbl">More Inquiries</div>
+            </div>
+            <div class="broker-stat">
+              <div class="broker-stat-num">60%</div>
+              <div class="broker-stat-lbl">Faster Closures</div>
+            </div>
+            <div class="broker-stat">
+              <div class="broker-stat-num">100%</div>
+              <div class="broker-stat-lbl">Mobile Ready</div>
+            </div>
+            <div class="broker-stat">
+              <div class="broker-stat-num">0</div>
+              <div class="broker-stat-lbl">App Downloads</div>
+            </div>
+          </div>
+
+          <div class="broker-quote">
+            <p>"A dedicated property website lets tenants explore listings at their own pace and share links with family
+              — dramatically improving conversion."</p>
+            <cite>— B S Property, Mumbai</cite>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+     FOOTER
+     ================================================================ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">B&nbsp;S&nbsp;Property</div>
+          <p>Curating Mumbai's finest rental homes for discerning tenants and professional brokers since 2015.</p>
+          <div style="margin-top:20px;">
+            <span class="demo-badge">⚠ Demo Website</span>
+          </div>
+        </div>
+
+        <!-- Properties -->
+        <div class="footer-col">
+          <h4>Properties</h4>
+          <ul class="footer-links">
+            <li><a href="#listings" id="footer-all-listings">All Listings</a></li>
+            <li><a href="#" onclick="filterByLocation('Bandra');return false;" id="footer-bandra">Bandra</a></li>
+            <li><a href="#" onclick="filterByLocation('Juhu');return false;" id="footer-juhu">Juhu</a></li>
+            <li><a href="#" onclick="filterByLocation('Powai');return false;" id="footer-powai">Powai</a></li>
+            <li><a href="#" onclick="filterByLocation('Andheri');return false;" id="footer-andheri">Andheri</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" id="footer-about">About Us</a></li>
+            <li><a href="#broker-cta" id="footer-brokers">For Brokers</a></li>
+            <li><a href="#" id="footer-careers">Careers</a></li>
+            <li><a href="#" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="footer-terms">Terms of Use</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links" style="gap:14px;">
+            <li style="color:var(--muted);font-size:0.82rem;">
+              <strong style="color:var(--warm-white);display:block;margin-bottom:2px;font-weight:500;">Phone</strong>
+              +91 99999 99999
+            </li>
+            <li style="color:var(--muted);font-size:0.82rem;">
+              <strong style="color:var(--warm-white);display:block;margin-bottom:2px;font-weight:500;">Email</strong>
+              hello@bsproperty.in
+            </li>
+            <li style="color:var(--muted);font-size:0.82rem;">
+              <strong style="color:var(--warm-white);display:block;margin-bottom:2px;font-weight:500;">Office</strong>
+              Bandra West, Mumbai 400 050
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>© 2026 B S Property. All rights reserved. &nbsp;·&nbsp; <em style="color:var(--muted);">Demo website —
+            fictional listings.</em></p>
+        <div style="display:flex;gap:16px;align-items:center;">
+          <a href="https://wa.me/919999999999" target="_blank" rel="noopener" id="footer-whatsapp"
+            style="color:var(--muted);font-size:0.75rem;transition:color 0.2s;" onmouseover="this.style.color='#25D366'"
+            onmouseout="this.style.color='var(--muted)'">WhatsApp</a>
+          <span style="color:var(--border);">|</span>
+          <p style="font-size:0.75rem;color:var(--muted);">Built for demo purposes</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
